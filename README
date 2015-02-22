@@ -11,3 +11,6 @@ http://api-portal.anypoint.mulesoft.com/nextbus/api/nextbus-api/docs/reference
 
 Language used:
 Python (just starting with it, I am a ruby programmer BTW :) )
+
+Steps:
+1) Check you have python and sqlite 3 installed. Easy way to check: python, sqlite3.version

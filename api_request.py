@@ -1,11 +1,12 @@
 import requests
 import sys
+import settings
 
 def get_data(query,params=None):
 	if params is None:
-		url = 'http://realtime.mbta.com/developer/api/v2/' + query + '?api_key=wX9NwuHnZU2ToO7GmGR9uw&format=json'
+		url = 'http://realtime.mbta.com/developer/api/v2/{0}'.format(query) + '?api_key=' + settings.API_KEY + '&format=json'
 	else:
-		url = 'http://realtime.mbta.com/developer/api/v2/' + query + '?api_key=wX9NwuHnZU2ToO7GmGR9uw&format=json&' + params
+		url = 'http://realtime.mbta.com/developer/api/v2/{0}'.format(query) + '?api_key=' + settings.API_KEY + '&format=json{0}&'.format(params)
 	r = requests.get(url)
 	return r.json()
 
@@ -22,12 +23,12 @@ def get_routes(mode_name):
 ## also make sure that method skip, hidden routes
 
 def get_schedule(route):
-	params = 'route='+route
+	params = "route={0}".format(route)
 	response = get_data("schedulebyroute",params)
 	return response
 
 def prediction(stop_id):
-	params = 'stop=' + stop_id
+	params = 'stop={0}'.format(stop_id)
 	response = get_data("predictionsbystop",params)
 	return response
 
@@ -43,6 +44,4 @@ def store_trip():
 				bus_trips.append(direction["trip"])
 	print bus_trips
 	file.write(str(bus_trips))
-	file.close
-
-store_trip()    
+	file.close 
