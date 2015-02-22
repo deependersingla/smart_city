@@ -42,6 +42,7 @@ Process a:
 (check vehicle speed also for that day compared with previous data)
 
 3) check if there is an alert fired for that affected route and service if not store it in db.
+
 Process b:
 1) checking schedule by stopes. With this we will be able to stops. (it takes lot of params but in the start we will only gove for that day), while writing this make sure to filter only mode_name by "bus"
 
@@ -78,18 +79,12 @@ def get_data()
 Usecases:
 a) According to the time of week and time of day can i take turn according to save myself from gem using previous data.
 
-
 b) Create distribution of delays.
 
 C) EACH ROW N YOUR STOP CAN BE MODEL.
 
-d) take delay time. 
+d) Take delay time. 
 
-e) linear regression can be second modules
+e) Linear regression can be second modules
 
-f) k near neighbours.
-
-
-
-
-
+f) K near neighbours.
