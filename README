@@ -1,0 +1,14 @@
+Problem: Traffic is a huge problem in today metor cities and It will continue to increase as more people will move towards middle class and they will buy automobiles (which is a good thindg :), As I want to see a world where everyone has only first world problems nothing else. But to make this dream come true we need to solve the problem with traffic. Traffic is definately a first world problem. Its a huge problem because of which people waster there time, fuel which also harm environment.
+
+Solution: I think we all the data available to us for traffic, we can solve this issue by predicting traffic behaviour so roads usage can be optimized.
+
+Lets start hacking.
+
+Sources of data:
+http://realtime.mbta.com/portal
+http://www.mbta.com/rider_tools/developers/
+http://api-portal.anypoint.mulesoft.com/nextbus/api/nextbus-api/docs/reference
+
+Language used:
+Python (just starting with it, I am a ruby programmer BTW :) )
+

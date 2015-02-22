@@ -1,0 +1,95 @@
+1) Go to Website:  http://realtime.mbta.com/portal 
+(getting started)
+2) first thing need to find out is the developers docs (also check if it is free to use , if you believe in using free services)
+
+(read them for documentation)
+3)Find quick start guide they are the best way to use deal with api.
+
+After glancing through it, register the account to get an API key.
+4)See if there is a trial key available to use while you wait for your applied key, it is available.
+wX9NwuHnZU2ToO7GmGR9uw
+
+
+
+5) Now we will go to the API documentation and see what we can do with the data available
+
+6) Lets write a python method to query the api. Here all the request are get request, so lets write method where we give query and params to the method.
+
+
+7) Here first api tells us how to get data in json format:
+http://realtime.mbta.com/developer/api/v2/<query>?api_key=awAsAaIqO0OZnHtht5BOAg
+&format=json&<parameter>=<required/optional parameters>
+
+8) One simple way for us to check the data is the see schedule time for the buses and there arrival time.
+(so for this we need to store data , lets check if this api give past data also. if not in next module we will teach how to store data for use and wrie it to csv using cron job.)
+
+##lets start programming
+1) get_routes("Bus")
+
+mode_name is bus /rails or subway (find only bus)
+
+# In all API the best approach is to see data and make the filters for the data to be used but one thing to keep in mind whenever you do that, try only to make filter not based on position but bases on key value. for example bus_route is at index 3 but that can change so its better to make filter bases on routes.
+
+11) Next task for us is to store data for the routes one by one and there way.
+
+Process a:
+
+1) checking schedule by routes. With this we will be able to find out routes of buses. (it takes lot of params but in the start we will only for the next day)
+## for this i have to make a cron job to fire that query at that time everyday or make a system which do that automatically
+## make query near to completion time basically query by trip id to check if bus recieven on time. Page 35 "Predictions by vehicle "
+
+2) check actual reached time from predictive 
+(check vehicle speed also for that day compared with previous data)
+
+3) check if there is an alert fired for that affected route and service if not store it in db.
+Process b:
+1) checking schedule by stopes. With this we will be able to stops. (it takes lot of params but in the start we will only gove for that day), while writing this make sure to filter only mode_name by "bus"
+
+2) check actual reached time from predictive
+
+3) check if there is an alert fired for that affected route and service if not store it in db.
+
+
+def get_routes()
+  response = get_data()
+end
+
+So lets write a method which gives us json
+
+def get_data()
+  
+## doubt:
+1) Is MBTA a bus service or a train service?
+2) Suppose what is the aim here to see the last few week data and find out if some routes at particular time buses are getting delayed? Is there any causation here?
+3) Ask vik how to reduce this outlier event from data. (one brute force way is to increaes the span of data)?
+4) How to visualize the data?
+5) Should i start storing data and then do the analysis or is analysis will be done veryday from previous data?
+6) May be a google sheet can be used to store data? (finding the python client library)
+7) Data collection will take a lot of time.
+
+## points to take care:
+1) There are buses stopped and delayed due to weather outrage, please consider that while doing analysis
+2) Filter train data from here?
+3) use of schedule by stops also to find out if that stop is having late issues also. Means traffic problem near to it
+4) Prediction by stop for the next hours for a particular stop
+5) weather based outage and traffic delays. may you can use weather underground can be used.
+
+
+Usecases:
+a) According to the time of week and time of day can i take turn according to save myself from gem using previous data.
+
+
+b) Create distribution of delays.
+
+C) EACH ROW N YOUR STOP CAN BE MODEL.
+
+d) take delay time. 
+
+e) linear regression can be second modules
+
+f) k near neighbours.
+
+
+
+
+
